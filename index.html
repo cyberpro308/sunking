@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SunKing</title>
+  <link rel="icon" href="favicon.ico">
+  <meta name="description" content="SunKing">
+  <meta name="author" content="SunKing">
+  <meta property="og:title" content="SunKing">
+  <meta property="og:description" content="SunKing">
+  <meta property="og:image" content="img/favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sunking.com/SunKing">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="SunKing">
+  <meta property="twitter:description" content="">
+  <meta property="twitter:image" content="">
+  <link rel="manifest" href="manifest.json">
+
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff; 
+      color: black;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #fddc00;
+      height: 70px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      height: 50px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 24px;
+      color: black;
+      text-transform: lowercase;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .flag-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+    }
+
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* DROPDOWN MENU */
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      background-color: #fddc00;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu a,
+    .about-dropdown {
+      margin: 10px 0;
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+  
+    /* HERO SECTION */
+    .hellocontainer {
+      height: 100vh;
+      background-image: url(images/header\ img.jpeg);
+      background-size:cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hellocontainer h1 {
+      color: white;
+      font-size: 50px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .hellocontainer p {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hellocontainerbutton {
+      color: black;
+      background-color: #fddc00;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hellocontainerbutton:hover {
+      transform: translateY(-4px);
+    }
+
+    /* DISCOVER SECTION */
+    .discovercontainer {
+      width: 100%;
+      background-color: #fddc00;
+      padding: 40px 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .discovercontainer h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .discovercontainer p {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .discovercontainerbutton {
+      border: 1px solid black;
+      background-color: black;
+      color: #fddc00;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .discovercontainerbutton:hover {
+      transform: translateY(-4px);
+      }
+
+    /* WHY SUNKING */
+    .whysunkingcontainer {
+      background-color: #fff;
+      padding: 40px 20px;
+    }
+
+    .whysunkingcontainer h2 {
+      margin: 15px 0;
+    }
+
+    hr {
+      margin: 10px 0;
+      border: 1px solid #fddc00;
+    }
+
+    /* PRODUCTS */
+    .ourproduct {
+      background-color: #fddc00;
+      padding: 30px 20px;
+      margin-bottom: 30px;
+    }
+
+    .ourproductcontainer {
+      background-color: white;
+      padding: 20px;
+    }
+
+    .product-block {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .product-block div {
+      width: 100%;
+      height: 40vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-block p{
+      margin-bottom: 10px;
+    }
+    .browse-btn {
+      background-color: #fddc00;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .browse-btn:hover {
+      background-color: black;
+      color: #fddc00;
+    }
+
+    /* CUSTOMER SECTION */
+    .whatourcustomersaresaying {
+      background-color: white;
+      padding: 40px 20px;
+    }
+
+    blockquote {
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    .bluecontainer {
+      background-color: aqua;
+      color: black;
+      text-align: center; 
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .bluecontainer button {
+      background-color: black;
+      color: aqua;
+      border-radius: 30px;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .bluecontainer button:hover {
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    /* ABOUT + WORK WITH US */
+    .aboutsunkingcontainer,
+    .workwithuscontainer {
+      padding: 40px 20px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .workwithusimg {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background-image: url(images/work\ with\ us.jpeg);
+      background-position: center;
+      background-size: cover;
+      margin: 20px auto;
+    }
+
+    /* FOOTER */
+    .footercontainer {
+      background-color: #fddc00;
+      padding: 30px 20px;
+    }
+
+    .productandcompany {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      gap: 40px;
+    }
+
+    .product,
+    .company {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .goglaimg {
+      height: 50px;
+      background-image: url(images/logo-gcpc.webp);
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: 20px 0;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px) {
+      .hellocontainer{
+        height: 40vh;
+        width: auto;
+      }
+      .hellocontainer h1 {
+        font-size: 28px;
+      }
+
+      .hellocontainer p {
+        font-size: 16px;
+      }
+
+      .product-block div {
+        height: 200px;
+      }
+
+      .workwithusimg {
+        width: 180px;
+        height: 180px;
+      }
+
+      .productandcompany {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon">
+      <span class="logo-text">sun king</span>
+    </div>
+    <div class="nav-right">
+      <img src="images/nigeria-flag.png" alt="Nigeria Flag" class="flag-icon">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </nav>
+
+  <!-- DROPDOWN MENU -->
+  <div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+  <li><a href="sunking.html">Home</a></li>
+  <li><a href="about us sunking.html">About Us</a></li> 
+  <li><a href="#products">Products</a></li>
+  <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="close-menu" onclick="toggleMenu()">✕</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hellocontainer">
+    <h1>Hello, Nigeria</h1>
+    <p>Connect to reliable, stress-free solar energy with Sun King</p>
+    <div style="background-image:url(images/header\ img.jpeg)"></div>
+    <button class="hellocontainerbutton">Discover our range of solar solutions</button>
+  </div>
+
+  <!-- DISCOVER -->
+  <div class="discovercontainer">
+    <h1>Discover Your Perfect Solar-Powered Solution</h1>
+    <p>Explore our extensive range of reliable and affordable solar-powered products.</p>
+    <button class="discovercontainerbutton">Browse our range</button>
+  </div>
+
+  <!-- WHY -->
+  <div class="whysunkingcontainer">
+    <h2>Why Sun King?</h2>
+    <h2>Nigeria's Most Trusted Solar Provider</h2><hr>
+    <h2>Free Professional Installation & Warranty</h2><hr>
+    <h2>Pay Small Small</h2><hr>
+    <h2>Put the Power in Your Hands</h2><hr>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="ourproduct">
+    <h3>Our Products</h3>
+    <p>Solar solutions to meet your every need. Find the best option for you.</p>
+  </div>
+
+  <div class="ourproductcontainer">
+    <div class="product-block">
+      <div style="background-image:url(images/lantern.jpeg)"></div>
+      <h3>Solar Lanterns</h3>
+      <p>Budget-friendly solar lanterns for portable lighting, phone charging, music and radio.</p>
+      <button class="browse-btn">Browse our range</button>
+    </div>
+
+    <div class="product-block">
+      <div style="background-image:url(images/solar\ home.jpeg)"></div>
+      <h3>Solar Home Systems</h3>
+      <p>Light your home, charge phones and power TVs, radios and fans affordably.</p>
+      <button class="browse-btn">Browse our range</button>
+    </div>
+
+    <div class="product-block">
+      <div style="background-image:url(images/power\ play.jpeg)"></div>
+      <h3>Power Play</h3>
+      <p>Affordable and portable solar energy, anytime, anywhere.</p>
+      <button class="browse-btn">Learn more</button>
+    </div>
+
+    <div class="product-block">
+      <div style="background-image:url(images/powerhub.jpeg)"></div>
+      <h3>Power Hub</h3>
+      <p>Complete AC solar power for your home or business.</p>
+      <button class="browse-btn">Learn more</button>
+    </div>
+  </div>
+
+  <!-- CUSTOMER -->
+  <div class="whatourcustomersaresaying">
+    <h2>What Our Customers Say</h2>
+    <blockquote>
+      "Sun King brought light and life to my home. Now we can cook food in comfort, my children can read at night, and we enjoy good family moments watching TV together."
+      <br><br>- Mr. Iwuamadi Bonaventure, Businessman
+    </blockquote>
+    <div class="bluecontainer">
+      <h3>Need an Expert Opinion?</h3>
+      <p>Our personal solar advisors are here to help.</p>
+      <button>Speak to us</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="aboutsunkingcontainer">
+    <h1>About Sun King</h1>
+    <p>Sun King designs, distributes, installs, and finances solar energy solutions for the 1.8 billion people without reliable electricity. From cost-effective lanterns to multi-kilowatt solar systems, Sun King meets diverse energy needs across Africa and Asia.</p>
+    <button class="browse-btn">Learn more</button>
+  </div>
+
+  <!-- WORK WITH US -->
+  <div class="workwithuscontainer">
+    <div class="workwithusimg"></div>
+    <h1>Work With Us</h1>
+    <p>Recognized by Great Place to Work, Sun King Nigeria fosters a dynamic and friendly culture. Join Africa’s most popular solar supplier.</p>
+    <button class="browse-btn">Learn more</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footercontainer">
+      <div class="logo-container">
+        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon">
+        <span class="logo-text">sun king</span>
+      </div>
+
+      <div class="productandcompany">
+        <div class="product">
+          <h4>Products</h4>
+          <p>Product Selector</p>
+          <p>Solar Home Systems</p>
+          <p>Solar Inverter Systems</p>
+          <p>Solar Lanterns</p>
+        </div>
+
+        <div class="company">
+
+          <h4>Company</h4>
+          <p>Contact Us</p>
+          <p><a href="about us sunking.html" target="_blank">About Us</p></a>
+          <p>Work with Us</p>
+          <p>FAQs</p>
+          <p>Store Locator</p>
+          <p>Institutional Solutions</p>
+          <p>News & Blog</p>
+        </div>
+      </div>
+
+      <div class="goglaimg"></div>
+      <p>Sun King endorses Gogla Consumer Protection Principles</p>
+      <hr>
+      <p>Terms of Use | Privacy Policy</p>
+      <p>&copy; 2025 Sun King | All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+    }
+  </script>
+</body>
+</html>
