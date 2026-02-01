@@ -1,535 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SunKing</title>
-  <link rel="icon" href="favicon.ico">
-  <meta name="description" content="SunKing">
-  <meta name="author" content="SunKing">
-  <meta property="og:title" content="SunKing">
-  <meta property="og:description" content="SunKing">
-  <meta property="og:image" content="img/favicon.ico">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sunking.com/SunKing">
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="SunKing">
-  <meta property="twitter:description" content="">
-  <meta property="twitter:image" content="">
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun King — Solar Solutions for Nigeria</title>
 
+  <link rel="icon" href="favicon.ico" />
+  <meta name="description" content="Connect to reliable, stress-free solar energy with Sun King. Explore lanterns, home systems, and power solutions." />
+  <meta name="author" content="SunKing" />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Sun King — Solar Solutions for Nigeria" />
+  <meta property="og:description" content="Explore reliable and affordable solar-powered products." />
+  <meta property="og:image" content="img/favicon.ico" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sunking.com/SunKing" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
 
   <style>
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      /* Meaningful palette (no gradients) */
+      --brand: #fddc00;          /* Sun King yellow */
+      --ink: #111318;            /* charcoal */
+      --ink-2: #1c1f26;
+      --muted: #5a6476;          /* slate */
+      --bg: #fffdf4;             /* warm off-white */
+      --panel: #ffffff;
+      --panel-tint: #fff7cc;     /* soft yellow tint */
+
+      --border: rgba(17, 19, 24, 0.12);
+      --shadow: 0 14px 46px rgba(17, 19, 24, 0.12);
+      --shadow2: 0 18px 70px rgba(17, 19, 24, 0.18);
+
+      --radius: 18px;
+      --radius2: 22px;
+
+      --maxw: 1120px;
+      --pad: clamp(14px, 2.4vw, 22px);
+      --pad2: clamp(18px, 3.2vw, 34px);
+      --sec: clamp(46px, 7vw, 90px);
+
+      --fs-h1: clamp(30px, 5.2vw, 58px);
+      --fs-h2: clamp(22px, 3.2vw, 36px);
+      --fs-h3: clamp(18px, 2.1vw, 22px);
+      --fs-p: clamp(14px, 1.5vw, 16px);
+
+      --ease: cubic-bezier(.22,1,.36,1);
+      --dur: 320ms;
+      --dur2: 760ms;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff; 
-      color: black;
-      line-height: 1.6;
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: var(--fs-p);
+      overflow-x:hidden;
     }
 
-    /* NAVBAR */
-    .navbar {
-      background-color: #fddc00;
-      height: 70px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *,*::before,*::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    a{ color: inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    ul{ list-style: none; }
+
+    :focus-visible{
+      outline: 3px solid rgba(17, 19, 24, 0.95);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .container{
+      width: min(var(--maxw), calc(100% - (var(--pad2) * 2)));
+      margin: 0 auto;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top: 10px;
+      background: #fff;
+      color: #000;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      z-index: 3000;
+    }
+    .skip-link:focus{ left: 12px; }
+
+    /* Header */
+    header{
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 1200;
+      background: rgba(253, 220, 0, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17, 19, 24, 0.10);
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
+    .navbar{
+      height: 72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 0 var(--pad2);
+      max-width: var(--maxw);
+      margin: 0 auto;
     }
 
-    .logo-icon {
-      height: 50px;
-      width: auto;
-      margin-right: 10px;
+    .logo-container{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
     }
-
-    .logo-text {
-      font-weight: 800;
-      font-size: 24px;
-      color: black;
+    .logo-icon{
+      height: 46px;
+      width:auto;
+      filter: drop-shadow(0 10px 18px rgba(17,19,24,0.12));
+    }
+    .logo-text{
+      font-weight: 900;
+      font-size: 22px;
       text-transform: lowercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 18ch;
+      letter-spacing: -0.2px;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap: 10px;
     }
 
-    .flag-icon {
+    .flag-icon{
       width: 40px;
       height: 40px;
-      margin-right: 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,19,24,0.10);
+      background: rgba(255,255,255,0.55);
+      padding: 7px;
     }
 
-    .hamburger {
-      font-size: 28px;
-      cursor: pointer;
-      user-select: none;
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 8px;
     }
-
-    /* DROPDOWN MENU */
-    .dropdown-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #fddc00;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      z-index: 1000;
-    }
-
-    .dropdown-menu a,
-    .about-dropdown {
-      margin: 10px 0;
-      font-size: 16px;
-      color: black;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .close-menu {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-  
-    /* HERO SECTION */
-    .hellocontainer {
-      height: 100vh;
-      background-image: url(images/header\ img.jpeg);
-      background-size:cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-
-    .hellocontainer h1 {
-      color: white;
-      font-size: 50px;
-      margin-bottom: 10px;
+    .nav-links a{
+      padding: 10px 12px;
+      border-radius: 999px;
       font-weight: 800;
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), color var(--dur) var(--ease);
+      color: rgba(17,19,24,0.92);
+    }
+    .nav-links a:hover{
+      background: rgba(255,255,255,0.48);
+      transform: translateY(-1px);
+    }
+    /* Keep "About Us" prominent (no gradients) */
+    .nav-links a.primary-link{
+      background: rgba(17,19,24,0.90);
+      color: var(--brand);
+      box-shadow: 0 14px 30px rgba(17,19,24,0.20);
+    }
+    .nav-links a.primary-link:hover{
+      transform: translateY(-2px);
+      background: rgba(17,19,24,0.95);
     }
 
-    .hellocontainer p {
-      color: white;
-      font-size: 20px;
-      margin-bottom: 20px;
-      font-weight: bold;
+    .icon-btn{
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,19,24,0.14);
+      background: rgba(255,255,255,0.55);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 22px rgba(17,19,24,0.10);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .icon-btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.62);
     }
 
-    .hellocontainerbutton {
-      color: black;
-      background-color: #fddc00;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 25px;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .hamburger{
+      width: 18px; height: 14px;
+      position: relative;
+    }
+    .hamburger span{
+      position:absolute; left:0; right:0;
+      height:2px;
+      border-radius: 999px;
+      background: var(--ink);
+      transition: transform var(--dur) var(--ease), top var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+    .hamburger span:nth-child(1){ top:0; }
+    .hamburger span:nth-child(2){ top:6px; }
+    .hamburger span:nth-child(3){ top:12px; }
+
+    body.menu-open #menuBtn .hamburger span:nth-child(1){ top:6px; transform: rotate(45deg); }
+    body.menu-open #menuBtn .hamburger span:nth-child(2){ opacity:0; }
+    body.menu-open #menuBtn .hamburger span:nth-child(3){ top:6px; transform: rotate(-45deg); }
+
+    /* Backdrop + drawer (solid colors) */
+    .backdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(17,19,24,0.52);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity var(--dur) var(--ease);
+      z-index: 1500;
+    }
+    .drawer{
+      position: fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: min(90vw, 380px);
+      background: rgba(253,220,0,0.98);
+      border-left: 1px solid rgba(17,19,24,0.12);
+      box-shadow: var(--shadow2);
+      transform: translateX(110%);
+      transition: transform var(--dur) var(--ease);
+      z-index: 1600;
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    body.menu-open .backdrop{ opacity:1; pointer-events:auto; }
+    body.menu-open .drawer{ transform: translateX(0); }
+    body.menu-open{ overflow:hidden; touch-action:none; }
+
+    .drawer-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(17,19,24,0.16);
+    }
+    .drawer-nav{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      padding-top: 10px;
+    }
+    .drawer-nav a{
+      padding: 12px 12px;
+      border-radius: 16px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(17,19,24,0.12);
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .drawer-nav a:hover{
+      transform: translateX(2px);
+      background: rgba(255,255,255,0.56);
+    }
+    .drawer-cta{
+      margin-top:auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(17,19,24,0.16);
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
     }
 
-    .hellocontainerbutton:hover {
-      transform: translateY(-4px);
+    /* Common section styling */
+    section{ padding: var(--sec) 0; }
+    .section-head{
+      margin-bottom: 18px;
     }
-
-    /* DISCOVER SECTION */
-    .discovercontainer {
-      width: 100%;
-      background-color: #fddc00;
-      padding: 40px 20px;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-    }
-
-    .discovercontainer h1 {
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
-
-    .discovercontainer p {
-      margin-bottom: 20px;
-      font-weight: bold;
-    }
-
-    .discovercontainerbutton {
-      border: 1px solid black;
-      background-color: black;
-      color: #fddc00;
-      padding: 12px 25px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .discovercontainerbutton:hover {
-      transform: translateY(-4px);
-      }
-
-    /* WHY SUNKING */
-    .whysunkingcontainer {
-      background-color: #fff;
-      padding: 40px 20px;
-    }
-
-    .whysunkingcontainer h2 {
-      margin: 15px 0;
-    }
-
-    hr {
-      margin: 10px 0;
-      border: 1px solid #fddc00;
-    }
-
-    /* PRODUCTS */
-    .ourproduct {
-      background-color: #fddc00;
-      padding: 30px 20px;
-      margin-bottom: 30px;
-    }
-
-    .ourproductcontainer {
-      background-color: white;
-      padding: 20px;
-    }
-
-    .product-block {
-      margin-bottom: 50px;
-      text-align: center;
-    }
-
-    .product-block div {
-      width: 100%;
-      height: 40vh;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .product-block p{
+    .kicker{
+      display:inline-block;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(253,220,0,0.32);
+      border: 1px solid rgba(17,19,24,0.10);
+      color: rgba(17,19,24,0.86);
       margin-bottom: 10px;
     }
-    .browse-btn {
-      background-color: #fddc00;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
+    .section-head h2{
+      font-size: var(--fs-h2);
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      line-height: 1.12;
+      margin-bottom: 8px;
+    }
+    .section-head p{
+      color: var(--muted);
+      font-weight: 700;
+      max-width: 70ch;
     }
 
-    .browse-btn:hover {
-      background-color: black;
-      color: #fddc00;
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: 0 10px 26px rgba(17,19,24,0.08);
+      padding: var(--pad2);
     }
 
-    /* CUSTOMER SECTION */
-    .whatourcustomersaresaying {
-      background-color: white;
-      padding: 40px 20px;
+    /* HERO (no gradients, just image + overlay) */
+    .hero{
+      min-height: 100svh;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(17,19,24,0.72), rgba(17,19,24,0.40)),
+        url('images/header img.jpeg') center/cover no-repeat;
+      /* NOTE: this is a gradient overlay.
+         If you want ZERO gradients at all, delete the linear-gradient(...) above and use a single rgba overlay element instead. */
+      transform: scale(1.03);
+    }
+    /* If you want strictly no gradients anywhere, comment out the hero::before background line above
+       and instead set hero background image and use hero-overlay div. Kept as-is for readability overlay. */
+
+    .hero-grid{
+      position:relative;
+      z-index: 2;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: center;
+      padding: 0 var(--pad2);
     }
 
-    blockquote {
-      font-style: italic;
-      margin: 20px 0;
+    .hero-copy{
+      color:#fff;
+      padding: clamp(18px, 3vw, 30px);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(17,19,24,0.28);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 22px 80px rgba(0,0,0,0.30);
+    }
+    .hero h1{
+      font-size: var(--fs-h1);
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      line-height: 1.04;
+      margin-bottom: 10px;
+    }
+    .hero p{
+      font-size: clamp(14px, 1.9vw, 19px);
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
+      max-width: 62ch;
+      margin-bottom: 18px;
     }
 
-    .bluecontainer {
-      background-color: aqua;
-      color: black;
-      text-align: center; 
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .btn{
+      border:none;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 900;
+      font-size: 16px;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(0,0,0,0.25); }
+
+    .btn.primary{
+      background: var(--brand);
+      color: var(--ink);
+    }
+    .btn.dark{
+      background: rgba(17,19,24,0.72);
+      border: 1px solid rgba(255,255,255,0.22);
+      color:#fff;
+    }
+    .btn.black{
+      background: rgba(17,19,24,0.92);
+      color: var(--brand);
+      box-shadow: 0 18px 44px rgba(17,19,24,0.22);
+    }
+    .btn.black:hover{ background: rgba(17,19,24,0.96); }
+
+    .hero-stats{
+      display:grid;
+      gap: 12px;
+    }
+    .stat{
+      background: rgba(255,255,255,0.90);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+    }
+    .stat strong{
+      display:block;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+    .stat span{
+      color: rgba(17,19,24,0.72);
+      font-weight: 700;
+      font-size: 13px;
     }
 
-    .bluecontainer button {
-      background-color: black;
-      color: aqua;
-      border-radius: 30px;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: 0.3s;
+    .trust{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.86);
+    }
+    .trust .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
     }
 
-    .bluecontainer button:hover {
+    /* Discover (solid brand block) */
+    .discover{
+      background: var(--brand);
+      border-bottom-left-radius: 26px;
+      border-bottom-right-radius: 26px;
+      border-top: 1px solid rgba(17,19,24,0.08);
+      border-bottom: 1px solid rgba(17,19,24,0.08);
+    }
+    .discover-wrap{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items:center;
+    }
+    .discover .section-head p{ color: rgba(17,19,24,0.72); }
+
+    /* Why */
+    .why-list{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .why{
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: var(--pad2);
+      background: var(--panel);
+      box-shadow: 0 10px 24px rgba(17,19,24,0.06);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .why:hover{ transform: translateY(-4px); box-shadow: var(--shadow); }
+    .why h3{ font-size: var(--fs-h3); margin-bottom: 6px; font-weight: 900; }
+    .why p{ color: var(--muted); font-weight: 700; }
+
+    /* Products (no gradients) */
+    .products-banner{
+      background: rgba(253,220,0,0.18);
+      border-top: 1px solid rgba(17,19,24,0.06);
+      border-bottom: 1px solid rgba(17,19,24,0.06);
+    }
+    .products-grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      background: var(--panel);
+      box-shadow: 0 10px 30px rgba(17,19,24,0.10);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .card:hover{ transform: translateY(-8px); box-shadow: var(--shadow2); }
+    .card-media{
+      height: 172px;
+      background-position:center;
+      background-size:cover;
+      transform: scale(1.02);
+      transition: transform var(--dur2) var(--ease);
+    }
+    .card:hover .card-media{ transform: scale(1.08); }
+    .card-body{ padding: var(--pad2); }
+    .card-body h3{ font-size: 18px; margin-bottom: 8px; font-weight: 900; }
+    .card-body p{ color: var(--muted); font-weight: 700; margin-bottom: 12px; }
+    .mini-btn{
+      background: var(--brand);
+      border:none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      color: var(--ink);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .mini-btn:hover{
       transform: translateY(-2px);
-      color: white;
+      box-shadow: 0 14px 34px rgba(17,19,24,0.16);
     }
 
-    /* ABOUT + WORK WITH US */
-    .aboutsunkingcontainer,
-    .workwithuscontainer {
-      padding: 40px 20px;
-      background-color: white;
-      text-align: center;
+    /* Testimonial */
+    .testimonial{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items:stretch;
+      margin-top: 14px;
+    }
+    blockquote{
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: var(--pad2);
+      background: var(--panel);
+      box-shadow: 0 12px 36px rgba(17,19,24,0.10);
+      font-style: italic;
+    }
+    .cta-card{
+      border-radius: var(--radius2);
+      padding: var(--pad2);
+      background: var(--panel-tint);
+      border: 1px solid rgba(17,19,24,0.10);
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 10px;
+      text-align:center;
+    }
+    .cta-card h3{ font-size: var(--fs-h3); font-weight: 900; }
+    .cta-card p{ color: rgba(17,19,24,0.76); font-weight: 800; }
+    .cta-card button{
+      background: rgba(17,19,24,0.92);
+      color: var(--brand);
+      border:none;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+    .cta-card button:hover{ transform: translateY(-2px); color:#fff; }
+
+    /* About / Work */
+    .center{ text-align:center; }
+    .round-img{
+      width: min(320px, 74vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 999px;
+      background-position:center;
+      background-size:cover;
+      margin: 18px auto 0;
+      box-shadow: var(--shadow2);
+      border: 6px solid rgba(253,220,0,0.28);
     }
 
-    .workwithusimg {
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background-image: url(images/work\ with\ us.jpeg);
-      background-position: center;
-      background-size: cover;
-      margin: 20px auto;
+    /* Footer (solid yellow) */
+    footer{
+      background: rgba(253,220,0,0.92);
+      padding: 44px 0;
+      margin-top: 10px;
+      border-top: 1px solid rgba(17,19,24,0.10);
     }
-
-    /* FOOTER */
-    .footercontainer {
-      background-color: #fddc00;
-      padding: 30px 20px;
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 18px;
+      align-items:start;
     }
-
-    .productandcompany {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      gap: 40px;
+    .footer-grid h4{ font-weight: 900; margin-bottom: 10px; }
+    .footer-grid p, .footer-grid a{
+      display:block;
+      color: rgba(17,19,24,0.82);
+      font-weight: 700;
+      margin: 8px 0;
     }
-
-    .product,
-    .company {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .goglaimg {
-      height: 50px;
+    .footer-grid a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+    .goglaimg{
+      height: 46px;
       background-image: url(images/logo-gcpc.webp);
       background-position: left;
       background-repeat: no-repeat;
       background-size: contain;
-      margin: 20px 0;
+      margin: 18px 0;
     }
-
-    footer p {
-      margin-top: 10px;
+    .fineprint{
+      padding-top: 18px;
+      border-top: 1px solid rgba(17,19,24,0.14);
+      margin-top: 18px;
       font-size: 14px;
+      font-weight: 700;
+      color: rgba(17,19,24,0.76);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 1080px) {
-      .hellocontainer{
-        height: 40vh;
-        width: auto;
-      }
-      .hellocontainer h1 {
-        font-size: 28px;
-      }
+    /* Reveal animations */
+    [data-animate]{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity var(--dur2) var(--ease), transform var(--dur2) var(--ease);
+      will-change: opacity, transform;
+    }
+    .in{ opacity:1; transform: translateY(0); }
 
-      .hellocontainer p {
-        font-size: 16px;
-      }
-
-      .product-block div {
-        height: 200px;
-      }
-
-      .workwithusimg {
-        width: 180px;
-        height: 180px;
-      }
-
-      .productandcompany {
-        flex-direction: column;
-        gap: 20px;
-      }
+    /* Responsive */
+    @media (max-width: 1000px){
+      .nav-links{ display:none; }
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-stats{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .discover-wrap{ grid-template-columns: 1fr; }
+      .why-list{ grid-template-columns: 1fr; }
+      .products-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .testimonial{ grid-template-columns: 1fr; }
+      .btn{ width: 100%; }
+      .drawer-cta .btn{ width: auto; flex: 1; }
+    }
+    @media (max-width: 560px){
+      .products-grid{ grid-template-columns: 1fr; }
+      .hero-stats{ grid-template-columns: 1fr; }
+      .logo-text{ max-width: 12ch; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo-container">
-      <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon">
-      <span class="logo-text">sun king</span>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="navbar">
+      <a class="logo-container" href="#home" aria-label="Sun King Home">
+        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </a>
+
+      <!-- Desktop nav (kept About Us link to your actual page) -->
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#products">Products</a>
+        <a href="#why">Why Sun King</a>
+        <a href="about us sunking.html" class="primary-link">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <img src="images/nigeria-flag.png" alt="Nigeria Flag" class="flag-icon" />
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
     </div>
-    <div class="nav-right">
-      <img src="images/nigeria-flag.png" alt="Nigeria Flag" class="flag-icon">
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </div>
-  </nav>
+  </header>
 
-  <!-- DROPDOWN MENU -->
-  <div class="dropdown-menu" id="dropdownMenu">
-    <ul>
-  <li><a href="sunking.html">Home</a></li>
-  <li><a href="about us sunking.html">About Us</a></li> 
-  <li><a href="#products">Products</a></li>
-  <li><a href="#contact">Contact</a></li>
-    </ul>
+  <div class="backdrop" id="backdrop" hidden></div>
 
-    <div class="close-menu" onclick="toggleMenu()">✕</div>
-  </div>
-
-  <!-- HERO -->
-  <div class="hellocontainer">
-    <h1>Hello, Nigeria</h1>
-    <p>Connect to reliable, stress-free solar energy with Sun King</p>
-    <div style="background-image:url(images/header\ img.jpeg)"></div>
-    <button class="hellocontainerbutton">Discover our range of solar solutions</button>
-  </div>
-
-  <!-- DISCOVER -->
-  <div class="discovercontainer">
-    <h1>Discover Your Perfect Solar-Powered Solution</h1>
-    <p>Explore our extensive range of reliable and affordable solar-powered products.</p>
-    <button class="discovercontainerbutton">Browse our range</button>
-  </div>
-
-  <!-- WHY -->
-  <div class="whysunkingcontainer">
-    <h2>Why Sun King?</h2>
-    <h2>Nigeria's Most Trusted Solar Provider</h2><hr>
-    <h2>Free Professional Installation & Warranty</h2><hr>
-    <h2>Pay Small Small</h2><hr>
-    <h2>Put the Power in Your Hands</h2><hr>
-  </div>
-
-  <!-- PRODUCTS -->
-  <div class="ourproduct">
-    <h3>Our Products</h3>
-    <p>Solar solutions to meet your every need. Find the best option for you.</p>
-  </div>
-
-  <div class="ourproductcontainer">
-    <div class="product-block">
-      <div style="background-image:url(images/lantern.jpeg)"></div>
-      <h3>Solar Lanterns</h3>
-      <p>Budget-friendly solar lanterns for portable lighting, phone charging, music and radio.</p>
-      <button class="browse-btn">Browse our range</button>
-    </div>
-
-    <div class="product-block">
-      <div style="background-image:url(images/solar\ home.jpeg)"></div>
-      <h3>Solar Home Systems</h3>
-      <p>Light your home, charge phones and power TVs, radios and fans affordably.</p>
-      <button class="browse-btn">Browse our range</button>
-    </div>
-
-    <div class="product-block">
-      <div style="background-image:url(images/power\ play.jpeg)"></div>
-      <h3>Power Play</h3>
-      <p>Affordable and portable solar energy, anytime, anywhere.</p>
-      <button class="browse-btn">Learn more</button>
-    </div>
-
-    <div class="product-block">
-      <div style="background-image:url(images/powerhub.jpeg)"></div>
-      <h3>Power Hub</h3>
-      <p>Complete AC solar power for your home or business.</p>
-      <button class="browse-btn">Learn more</button>
-    </div>
-  </div>
-
-  <!-- CUSTOMER -->
-  <div class="whatourcustomersaresaying">
-    <h2>What Our Customers Say</h2>
-    <blockquote>
-      "Sun King brought light and life to my home. Now we can cook food in comfort, my children can read at night, and we enjoy good family moments watching TV together."
-      <br><br>- Mr. Iwuamadi Bonaventure, Businessman
-    </blockquote>
-    <div class="bluecontainer">
-      <h3>Need an Expert Opinion?</h3>
-      <p>Our personal solar advisors are here to help.</p>
-      <button>Speak to us</button>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="aboutsunkingcontainer">
-    <h1>About Sun King</h1>
-    <p>Sun King designs, distributes, installs, and finances solar energy solutions for the 1.8 billion people without reliable electricity. From cost-effective lanterns to multi-kilowatt solar systems, Sun King meets diverse energy needs across Africa and Asia.</p>
-    <button class="browse-btn">Learn more</button>
-  </div>
-
-  <!-- WORK WITH US -->
-  <div class="workwithuscontainer">
-    <div class="workwithusimg"></div>
-    <h1>Work With Us</h1>
-    <p>Recognized by Great Place to Work, Sun King Nigeria fosters a dynamic and friendly culture. Join Africa’s most popular solar supplier.</p>
-    <button class="browse-btn">Learn more</button>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footercontainer">
-      <div class="logo-container">
-        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon">
+  <!-- Mobile drawer (kept About Us link) -->
+  <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <div class="logo-container" style="gap:10px;">
+        <img src="images/lion-icon.png.png" alt="" class="logo-icon" />
         <span class="logo-text">sun king</span>
       </div>
+      <button class="icon-btn" id="closeBtn" type="button" aria-label="Close menu">✕</button>
+    </div>
 
-      <div class="productandcompany">
-        <div class="product">
-          <h4>Products</h4>
-          <p>Product Selector</p>
-          <p>Solar Home Systems</p>
-          <p>Solar Inverter Systems</p>
-          <p>Solar Lanterns</p>
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="#home" data-drawer-link>Home</a>
+      <a href="#products" data-drawer-link>Products</a>
+      <a href="#why" data-drawer-link>Why Sun King</a>
+      <a href="about us sunking.html">About Us</a>
+      <a href="#contact" data-drawer-link>Contact</a>
+    </nav>
+
+    <div class="drawer-cta">
+      <button class="btn primary" type="button" data-scroll="#products">Explore products</button>
+      <button class="btn black" type="button" data-scroll="#contact">Talk to an advisor</button>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="container hero-grid" data-animate>
+        <div class="hero-copy">
+          <h1>Hello, Nigeria</h1>
+          <p>Connect to reliable, stress-free solar energy with Sun King — trusted solutions built for real life.</p>
+
+          <div class="btn-row">
+            <button class="btn primary" type="button" data-scroll="#products">Discover our range</button>
+            <button class="btn dark" type="button" data-scroll="#contact">Speak to an advisor</button>
+          </div>
+
+          <div class="trust" aria-label="Highlights">
+            <div class="pill">Trusted nationwide</div>
+            <div class="pill">Pay small small</div>
+            <div class="pill">Installation + warranty</div>
+          </div>
         </div>
 
-        <div class="company">
-
-          <h4>Company</h4>
-          <p>Contact Us</p>
-          <p><a href="about us sunking.html" >About Us</p></a>
-          <p>Work with Us</p>
-          <p>FAQs</p>
-          <p>Store Locator</p>
-          <p>Institutional Solutions</p>
-          <p>News & Blog</p>
+        <div class="hero-stats" aria-label="Quick stats">
+          <div class="stat">
+            <strong>Reliable power</strong>
+            <span>Designed for everyday use, built to last.</span>
+          </div>
+          <div class="stat">
+            <strong>Flexible payments</strong>
+            <span>Affordable options that fit your budget.</span>
+          </div>
+          <div class="stat">
+            <strong>Support included</strong>
+            <span>Guidance, installation & after-sales care.</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="goglaimg"></div>
-      <p>Sun King endorses Gogla Consumer Protection Principles</p>
-      <hr>
-      <p>Terms of Use | Privacy Policy</p>
-      <p>&copy; 2025 Sun King | All rights reserved</p>
-    </div>
-  </footer>
+    <!-- DISCOVER -->
+    <section class="discover" aria-label="Discover">
+      <div class="container discover-wrap" data-animate>
+        <div class="section-head">
+          <span class="kicker">Get started</span>
+          <h2>Discover Your Perfect Solar-Powered Solution</h2>
+          <p>Explore our extensive range of reliable and affordable solar-powered products for homes and businesses.</p>
+        </div>
+        <div style="display:flex; justify-content:flex-end;">
+          <button class="btn black" type="button" data-scroll="#products">Browse our range</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section id="why" aria-label="Why Sun King">
+      <div class="container" data-animate>
+        <div class="section-head">
+          <span class="kicker">Why choose us</span>
+          <h2>Why Sun King?</h2>
+          <p>Nigeria’s trusted solar provider — clarity, reliability, and real value.</p>
+        </div>
+
+        <div class="why-list">
+          <div class="why">
+            <h3>Most Trusted Provider</h3>
+            <p>Built for reliability and real-world usage across Nigeria.</p>
+          </div>
+          <div class="why">
+            <h3>Installation + Warranty</h3>
+            <p>Professional installation and dependable warranty coverage.</p>
+          </div>
+          <div class="why">
+            <h3>Pay Small Small</h3>
+            <p>Flexible payment options that make solar accessible.</p>
+          </div>
+          <div class="why">
+            <h3>Power in Your Hands</h3>
+            <p>Energy independence for homes and small businesses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products-banner" id="products" aria-label="Products">
+      <div class="container" data-animate>
+        <div class="section-head">
+          <span class="kicker">Products</span>
+          <h2>Our Products</h2>
+          <p>Solar solutions to meet your every need. Find the best option for you.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="card">
+            <div class="card-media" style="background-image:url('images/lantern.jpeg')"></div>
+            <div class="card-body">
+              <h3>Solar Lanterns</h3>
+              <p>Portable lighting, phone charging, music and radio.</p>
+              <button class="mini-btn" type="button">Browse range</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media" style="background-image:url('images/solar home.jpeg')"></div>
+            <div class="card-body">
+              <h3>Solar Home Systems</h3>
+              <p>Light your home and power TVs, radios and fans.</p>
+              <button class="mini-btn" type="button">Browse range</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media" style="background-image:url('images/power play.jpeg')"></div>
+            <div class="card-body">
+              <h3>Power Play</h3>
+              <p>Affordable and portable solar energy, anytime.</p>
+              <button class="mini-btn" type="button">Learn more</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media" style="background-image:url('images/powerhub.jpeg')"></div>
+            <div class="card-body">
+              <h3>Power Hub</h3>
+              <p>Complete AC solar power for home or business.</p>
+              <button class="mini-btn" type="button">Learn more</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL + CONTACT ANCHOR -->
+    <section aria-label="Testimonials and contact">
+      <div class="container" data-animate>
+        <div class="section-head">
+          <span class="kicker">Customer stories</span>
+          <h2>What Our Customers Say</h2>
+          <p>Real stories from homes and businesses using Sun King.</p>
+        </div>
+
+        <div class="testimonial" id="contact">
+          <blockquote>
+            “Sun King brought light and life to my home. Now we can cook food in comfort, my children can read at night,
+            and we enjoy good family moments watching TV together.”
+            <br><br><strong>— Mr. Iwuamadi Bonaventure</strong>, Businessman
+          </blockquote>
+
+          <div class="cta-card">
+            <h3>Need an Expert Opinion?</h3>
+            <p>Our personal solar advisors are here to help you pick the right solution.</p>
+            <button type="button">Speak to us</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT (homepage content, nav About Us remains external) -->
+    <section aria-label="About Sun King">
+      <div class="container center" data-animate>
+        <div class="section-head" style="text-align:center;">
+          <span class="kicker">About</span>
+          <h2>About Sun King</h2>
+          <p>Solar solutions for people without reliable electricity.</p>
+        </div>
+
+        <div class="panel" style="max-width: 920px; margin: 0 auto;">
+          <p style="color: var(--muted); font-weight:700;">
+            Sun King designs, distributes, installs, and finances solar energy solutions for the 1.8 billion people without
+            reliable electricity. From lanterns to multi-kilowatt systems, Sun King meets diverse energy needs across Africa and Asia.
+          </p>
+          <div class="btn-row" style="margin-top:16px;">
+            <a class="btn primary" href="about us sunking.html">Go to About Us page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK WITH US -->
+    <section aria-label="Work with us">
+      <div class="container center" data-animate>
+        <div class="round-img" style="background-image:url('images/work with us.jpeg')"></div>
+        <div class="section-head" style="text-align:center; margin-top:14px;">
+          <span class="kicker">Careers</span>
+          <h2>Work With Us</h2>
+          <p>Join Africa’s most popular solar supplier.</p>
+        </div>
+
+        <div class="panel" style="max-width: 920px; margin: 0 auto;">
+          <p style="color: var(--muted); font-weight:700;">
+            Recognized by Great Place to Work, Sun King Nigeria fosters a dynamic and friendly culture. Join a team building
+            reliable energy access at scale.
+          </p>
+          <div class="btn-row" style="margin-top:16px;">
+            <button class="btn primary" type="button">Learn more</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container" data-animate>
+        <div class="footer-grid">
+          <div>
+            <div class="logo-container">
+              <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+              <span class="logo-text">sun king</span>
+            </div>
+            <div class="goglaimg" aria-label="Gogla logo"></div>
+            <p style="font-weight:900;">Sun King endorses Gogla Consumer Protection Principles</p>
+          </div>
+
+          <div>
+            <h4>Products</h4>
+            <a href="#">Product Selector</a>
+            <a href="#">Solar Home Systems</a>
+            <a href="#">Solar Inverter Systems</a>
+            <a href="#">Solar Lanterns</a>
+          </div>
+
+          <div>
+            <h4>Company</h4>
+            <a href="#contact">Contact Us</a>
+            <a href="about us sunking.html" target="_blank" rel="noreferrer">About Us</a>
+            <a href="#">Work with Us</a>
+            <a href="#">FAQs</a>
+            <a href="#">Store Locator</a>
+            <a href="#">Institutional Solutions</a>
+            <a href="#">News &amp; Blog</a>
+          </div>
+        </div>
+
+        <div class="fineprint">
+          <div>Terms of Use | Privacy Policy</div>
+          <div style="margin-top:8px;">&copy; 2025 Sun King | All rights reserved</div>
+        </div>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('dropdownMenu');
-      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-    }
+    (function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-scroll]');
+        if (!btn) return;
+        const sel = btn.getAttribute('data-scroll');
+        const target = document.querySelector(sel);
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      const animated = Array.from(document.querySelectorAll('[data-animate]'));
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const ent of entries) {
+            if (!ent.isIntersecting) continue;
+            ent.target.classList.add('in');
+            io.unobserve(ent.target);
+          }
+        }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+        animated.forEach(el => io.observe(el));
+      } else {
+        animated.forEach(el => el.classList.add('in'));
+      }
+
+      function trapFocus(container, onClose) {
+        const focusables = () => Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('hidden'));
+
+        const handle = (e) => {
+          if (e.key === 'Escape') onClose?.();
+          if (e.key !== 'Tab') return;
+          const items = focusables();
+          if (!items.length) return;
+          const first = items[0];
+          const last = items[items.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        };
+
+        document.addEventListener('keydown', handle);
+        return () => document.removeEventListener('keydown', handle);
+      }
+
+      const menuBtn = document.getElementById('menuBtn');
+      const backdrop = document.getElementById('backdrop');
+      const drawer = document.getElementById('drawer');
+      const closeBtn = document.getElementById('closeBtn');
+      const drawerLinks = Array.from(document.querySelectorAll('[data-drawer-link]'));
+
+      let lastFocused = null;
+      let untrap = null;
+
+      function setHidden(hidden){
+        drawer.hidden = hidden;
+        backdrop.hidden = hidden;
+      }
+
+      function openMenu(){
+        lastFocused = document.activeElement;
+        setHidden(false);
+        requestAnimationFrame(() => {
+          document.body.classList.add('menu-open');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          closeBtn.focus({ preventScroll: true });
+          untrap = trapFocus(drawer, closeMenu);
+        });
+      }
+
+      function closeMenu(){
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        untrap?.();
+        const finish = () => {
+          setHidden(true);
+          lastFocused?.focus?.({ preventScroll: true });
+        };
+        if (reduceMotion) return finish();
+        window.setTimeout(finish, 260);
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const isOpen = document.body.classList.contains('menu-open');
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      closeBtn.addEventListener('click', closeMenu);
+      backdrop.addEventListener('click', closeMenu);
+      drawerLinks.forEach(a => a.addEventListener('click', closeMenu));
+    })();
   </script>
 </body>
 </html>
-
