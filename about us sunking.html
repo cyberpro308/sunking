@@ -1,253 +1,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Sunking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Sun King</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+
   <style>
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      
-      background-color: #f9f9f9;
-      color: #333;
+    :root{
+      --brand: #fddc00;          /* Yellow (primary brand) */
+      --ink: #111318;            /* Charcoal */
+      --muted: #5a6476;          /* Slate */
+      --bg: #fffdf4;             /* Warm off-white */
+      --panel: #ffffff;
+      --panel-tint: #fff7cc;     /* Light yellow tint */
+
+      --border: rgba(17, 19, 24, 0.12);
+      --shadow: 0 14px 46px rgba(17, 19, 24, 0.12);
+      --shadow2: 0 18px 70px rgba(17, 19, 24, 0.18);
+
+      --radius: 18px;
+      --radius2: 22px;
+
+      --maxw: 1120px;
+      --pad: clamp(14px, 2.4vw, 22px);
+      --pad2: clamp(18px, 3.2vw, 34px);
+      --sec: clamp(42px, 6.5vw, 88px);
+
+      --fs-h1: clamp(28px, 4.6vw, 54px);
+      --fs-h2: clamp(22px, 3.0vw, 34px);
+      --fs-h3: clamp(18px, 2.0vw, 22px);
+      --fs-p: clamp(14px, 1.5vw, 16px);
+
+      --ease: cubic-bezier(.22,1,.36,1);
+      --dur: 320ms;
+      --dur2: 760ms;
     }
 
-    .navbar {
-      background-color: #fddc00;
-      height: 70px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: var(--fs-p);
+      overflow-x:hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *,*::before,*::after{
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    a{ color: inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    ul{ list-style: none; }
+
+    :focus-visible{
+      outline: 3px solid rgba(17, 19, 24, 0.95);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .container{
+      width: min(var(--maxw), calc(100% - (var(--pad2) * 2)));
+      margin: 0 auto;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top: 10px;
+      background: #fff;
+      color: #000;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      z-index: 3000;
+    }
+    .skip-link:focus{ left: 12px; }
+
+    /* Header (matches the upgraded homepage vibe) */
+    header{
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 1200;
+      background: rgba(253, 220, 0, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(17, 19, 24, 0.10);
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
+    .navbar{
+      height: 72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 0 var(--pad2);
+      max-width: var(--maxw);
+      margin: 0 auto;
     }
 
-    .logo-icon {
-      height: 50px;
-      width: auto;
-      margin-right: 10px;
+    .logo-container{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
     }
-
-    .logo-text {
-      font-weight: 800;
-      font-size: 24px;
-      color: black;
+    .logo-icon{
+      height: 46px;
+      width:auto;
+      filter: drop-shadow(0 10px 18px rgba(17,19,24,0.12));
+    }
+    .logo-text{
+      font-weight: 900;
+      font-size: 22px;
       text-transform: lowercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 18ch;
+      letter-spacing: -0.2px;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap: 8px;
     }
-
-    .hamburger {
-      font-size: 28px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /* DROPDOWN MENU */
-    .dropdown-menu {
-      display: none;
-      flex-direction: column;
-      background-color: #fddc00;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      padding: 20px;
-      z-index: 1000;
-    }
-
-    .dropdown-menu a,
-    .about-dropdown {
-      margin: 10px 0;
-      font-size: 16px;
-      color: black;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .close-menu {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    /* Hero */
-    .about-hero {
-      height: 50vh;
-      background: url('images/header\ img.jpeg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-    .about-hero h1 {
-      font-size: 48px;
+    .nav-links a{
+      padding: 10px 12px;
+      border-radius: 999px;
       font-weight: 800;
-      background: rgba(0,0,0,0.4);
-      padding: 15px 25px;
-      border-radius: 10px;
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+      color: rgba(17,19,24,0.92);
+    }
+    .nav-links a:hover{
+      background: rgba(255,255,255,0.48);
+      transform: translateY(-1px);
+    }
+    .nav-links a.active{
+      background: rgba(17,19,24,0.90);
+      color: var(--brand);
+      box-shadow: 0 14px 30px rgba(17,19,24,0.20);
     }
 
-    /* About Content */
-    .about-section {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap: 10px;
     }
-    .about-section h2 {
-      font-size: 32px;
+
+    .icon-btn{
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,19,24,0.14);
+      background: rgba(255,255,255,0.55);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 22px rgba(17,19,24,0.10);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .icon-btn:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.62);
+    }
+
+    .hamburger{
+      width: 18px; height: 14px;
+      position: relative;
+    }
+    .hamburger span{
+      position:absolute; left:0; right:0;
+      height:2px;
+      border-radius: 999px;
+      background: var(--ink);
+      transition: transform var(--dur) var(--ease), top var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    }
+    .hamburger span:nth-child(1){ top:0; }
+    .hamburger span:nth-child(2){ top:6px; }
+    .hamburger span:nth-child(3){ top:12px; }
+
+    body.menu-open #menuBtn .hamburger span:nth-child(1){ top:6px; transform: rotate(45deg); }
+    body.menu-open #menuBtn .hamburger span:nth-child(2){ opacity:0; }
+    body.menu-open #menuBtn .hamburger span:nth-child(3){ top:6px; transform: rotate(-45deg); }
+
+    /* Drawer */
+    .backdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(17,19,24,0.52);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity var(--dur) var(--ease);
+      z-index: 1500;
+    }
+    .drawer{
+      position: fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: min(90vw, 380px);
+      background: rgba(253,220,0,0.98);
+      border-left: 1px solid rgba(17,19,24,0.12);
+      box-shadow: var(--shadow2);
+      transform: translateX(110%);
+      transition: transform var(--dur) var(--ease);
+      z-index: 1600;
+      padding: 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    body.menu-open .backdrop{ opacity:1; pointer-events:auto; }
+    body.menu-open .drawer{ transform: translateX(0); }
+    body.menu-open{ overflow:hidden; touch-action:none; }
+
+    .drawer-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(17,19,24,0.16);
+    }
+    .drawer-nav{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      padding-top: 10px;
+    }
+    .drawer-nav a{
+      padding: 12px 12px;
+      border-radius: 16px;
+      font-weight: 900;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(17,19,24,0.12);
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .drawer-nav a:hover{
+      transform: translateX(2px);
+      background: rgba(255,255,255,0.56);
+    }
+
+    .btn{
+      border:none;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      font-size: 15px;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 18px 48px rgba(0,0,0,0.18); }
+    .btn.primary{ background: var(--ink); color: var(--brand); }
+    .btn.ghost{ background: rgba(255,255,255,0.55); border: 1px solid rgba(17,19,24,0.12); color: var(--ink); }
+
+    .drawer-cta{
+      margin-top:auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(17,19,24,0.16);
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    /* Page hero */
+    .page-hero{
+      position: relative;
+      min-height: clamp(320px, 45vh, 460px);
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom: 1px solid rgba(17,19,24,0.06);
+      background: url("images/header img.jpeg") center/cover no-repeat;
+    }
+    .page-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: rgba(17,19,24,0.58); /* solid overlay (no gradients) */
+    }
+    .page-hero .inner{
+      position: relative;
+      z-index: 2;
+      padding: var(--sec) 0;
+      color: #fff;
+    }
+
+    .breadcrumb{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      margin-bottom: 12px;
+    }
+    .breadcrumb a{ color: rgba(255,255,255,0.90); }
+    .breadcrumb span{ color: rgba(255,255,255,0.70); }
+
+    .page-hero h1{
+      font-size: var(--fs-h1);
+      line-height: 1.05;
+      letter-spacing: -0.6px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .page-hero p{
+      max-width: 70ch;
+      color: rgba(255,255,255,0.86);
       font-weight: 700;
-      margin-bottom: 20px;
-      color:  #fddc00;
-    }
-    .about-section p {
-      margin-bottom: 20px;
-      font-size: 18px;
     }
 
-    /* Mission & Vision */
-    .mission-vision {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+    /* Sections */
+    section{ padding: var(--sec) 0; }
+
+    .section-head{
+      margin-bottom: 18px;
     }
-    .mv-box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+    .kicker{
+      display:inline-block;
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(253,220,0,0.28);
+      border: 1px solid rgba(17,19,24,0.10);
+      color: rgba(17,19,24,0.88);
+      margin-bottom: 10px;
     }
-    .mv-box:hover {
-      transform: translateY(-5px);
+    .section-head h2{
+      font-size: var(--fs-h2);
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
-    .mv-box h3 {
-      margin-bottom: 15px;
-      color:  #fddc00;
+    .section-head p{
+      color: var(--muted);
+      font-weight: 700;
+      max-width: 72ch;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      align-items:start;
+    }
+
+    .panel{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: 0 10px 26px rgba(17,19,24,0.08);
+      padding: var(--pad2);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat{
+      background: var(--panel-tint);
+      border: 1px solid rgba(17,19,24,0.10);
+      border-radius: var(--radius2);
+      padding: 16px;
+      box-shadow: 0 10px 22px rgba(17,19,24,0.08);
+    }
+    .stat strong{
+      display:block;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+    }
+    .stat span{
+      color: rgba(17,19,24,0.72);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .mv-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .mv-card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: var(--pad2);
+      box-shadow: 0 10px 24px rgba(17,19,24,0.08);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      position: relative;
+      overflow:hidden;
+    }
+    .mv-card:hover{
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+    .mv-icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(253,220,0,0.55);
+      border: 1px solid rgba(17,19,24,0.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: rgba(17,19,24,0.92);
+    }
+    .mv-card h3{
+      font-size: var(--fs-h3);
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+    .mv-card p{
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .reasons{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .reason{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: 16px;
+      box-shadow: 0 10px 22px rgba(17,19,24,0.06);
+    }
+    .reason strong{
+      display:block;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .reason span{
+      color: var(--muted);
+      font-weight: 700;
     }
 
     /* Footer */
-    footer {
-      background: #fddc00;
-      color: black;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 60px;
+    footer{
+      background: rgba(253,220,0,0.92);
+      padding: 42px 0;
+      border-top: 1px solid rgba(17,19,24,0.10);
+      margin-top: 10px;
+    }
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      color: rgba(17,19,24,0.84);
+      font-weight: 800;
     }
 
+    /* Reveal animations */
+    [data-animate]{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity var(--dur2) var(--ease), transform var(--dur2) var(--ease);
+      will-change: opacity, transform;
+    }
+    .in{ opacity:1; transform: translateY(0); }
+
     /* Responsive */
-    @media (max-width: 768px) {
-      .about-hero h1 {
-        font-size: 32px;
-      }
-      .about-section h2 {
-        font-size: 26px;
-      }
-      .about-section p {
-        font-size: 16px;
-      }
+    @media (max-width: 1000px){
+      .nav-links{ display:none; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .mv-grid{ grid-template-columns: 1fr; }
+      .reasons{ grid-template-columns: 1fr; }
+      .drawer-cta .btn{ flex: 1; }
+    }
+    @media (max-width: 560px){
+      .logo-text{ max-width: 12ch; }
+      .stats{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo-container">
-      <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon">
-      <span class="logo-text">sun king</span>
-    </div>
-    
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </div>
-  </nav>
+  <header>
+    <div class="navbar">
+      <a class="logo-container" href="index.html" aria-label="Sun King Home">
+        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </a>
 
-  <!-- DROPDOWN MENU -->
-  <div class="dropdown-menu" id="dropdownMenu">
-    <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="about us sunking.html">About Us</a></li> 
-  <li><a href="#products">Products</a></li>
-  <li><a href="#contact">Contact</a></li>
-    </ul>
+      <!-- Desktop nav (About Us stays as a real page link) -->
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#why">Why Sun King</a>
+        <a class="active" href="about us sunking.html">About Us</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
 
-    <div class="close-menu" onclick="toggleMenu()">✕</div>
-  </div>
-
-
-  <!-- Hero Section -->
-  <section class="about-hero">
-    <h1>About Sunking</h1>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section">
-    <h2>Who We Are</h2>
-    <p>
-      Sunking is more than just a solar brand – we are a movement to bring affordable, reliable, and sustainable energy to homes and businesses around the world. Since our founding, we’ve been 
-      dedicated to breaking energy barriers by providing innovative solar solutions that empower communities and drive progress.
-    </p>
-    <p>
-      With millions of products sold globally, Sunking has become a trusted leader in renewable energy. Our products range from home lighting systems to solar-powered appliances, all designed 
-      with one mission in mind: making clean energy accessible to everyone, everywhere.
-    </p>
-
-    <div class="mission-vision">
-      <div class="mv-box">
-        <h3>Our Mission</h3>
-        <p>
-          To brighten lives by delivering affordable, innovative, and reliable solar solutions that empower people, reduce energy poverty, and protect the planet.
-        </p>
-      </div>
-      <div class="mv-box">
-        <h3>Our Vision</h3>
-        <p>
-          A world where clean energy powers every home, school, and business – creating a brighter, more sustainable future for all.
-        </p>
-      </div>
-      <div class="mv-box">
-        <h3>Our Values</h3>
-        <p>
-          Innovation, Integrity, Sustainability, and Impact. These values guide everything we do, from design to customer experience, ensuring we deliver products that truly make a difference.
-        </p>
+      <div class="nav-right">
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Sunking. All rights reserved.</p>
-  </footer>
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <div class="logo-container" style="gap:10px;">
+        <img src="images/lion-icon.png.png" alt="" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </div>
+      <button class="icon-btn" id="closeBtn" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#why">Why Sun King</a>
+      <a href="about us sunking.html">About Us</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="drawer-cta">
+      <a class="btn primary" href="index.html#products">Explore products</a>
+      <a class="btn ghost" href="index.html#contact">Talk to an advisor</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="page-hero" aria-label="About hero">
+      <div class="container inner" data-animate>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>About Us</span>
+        </div>
+        <h1>About Sun King</h1>
+        <p>
+          Sun King is a movement to deliver affordable, reliable solar energy — empowering homes and businesses with clean power.
+        </p>
+      </div>
+    </section>
+
+    <section aria-label="Who we are">
+      <div class="container" data-animate>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="section-head">
+              <span class="kicker">Who we are</span>
+              <h2>Energy access that changes lives</h2>
+              <p>
+                We design and deliver solar solutions that reduce energy poverty, improve productivity, and support everyday comfort.
+              </p>
+            </div>
+
+            <p style="color: var(--muted); font-weight: 700; margin-top: 10px;">
+              Sun King is more than a solar brand — we are dedicated to breaking energy barriers by providing innovative solar solutions
+              that empower communities and drive progress.
+            </p>
+            <p style="color: var(--muted); font-weight: 700; margin-top: 10px;">
+              From home lighting systems to solar-powered appliances, our mission is simple: make clean, dependable energy accessible to
+              everyone, everywhere.
+            </p>
+
+            <div style="display:flex; gap: 10px; flex-wrap:wrap; margin-top: 16px;">
+              <a class="btn primary" href="index.html#products">View products</a>
+              <a class="btn ghost" href="index.html#contact">Contact us</a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="section-head" style="margin-bottom: 12px;">
+              <span class="kicker">Impact</span>
+              <h2>Built for scale, designed for trust</h2>
+              <p>Clear, reliable solutions with strong after-sales support.</p>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>Affordable</strong>
+                <span>Flexible options that fit real budgets.</span>
+              </div>
+              <div class="stat">
+                <strong>Reliable</strong>
+                <span>Products engineered for everyday use.</span>
+              </div>
+              <div class="stat">
+                <strong>Support</strong>
+                <span>Guidance, installation & service.</span>
+              </div>
+              <div class="stat">
+                <strong>Clean energy</strong>
+                <span>Less dependence on fuel and grid issues.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mv-grid" data-animate style="margin-top: 18px;">
+          <div class="mv-card">
+            <div class="mv-icon">M</div>
+            <h3>Our Mission</h3>
+            <p>
+              To brighten lives by delivering affordable, reliable solar solutions that reduce energy poverty and protect the planet.
+            </p>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">V</div>
+            <h3>Our Vision</h3>
+            <p>
+              A world where clean energy powers every home, school, and business — creating a brighter future for all.
+            </p>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">★</div>
+            <h3>Our Values</h3>
+            <p>
+              Innovation, integrity, sustainability, and impact — guiding every decision from product design to customer experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Why choose us" style="background: rgba(253,220,0,0.14); border-top: 1px solid rgba(17,19,24,0.06); border-bottom: 1px solid rgba(17,19,24,0.06);">
+      <div class="container" data-animate>
+        <div class="section-head">
+          <span class="kicker">Why Sun King</span>
+          <h2>What makes us different</h2>
+          <p>We focus on real outcomes: reliability, clarity, and long-term value.</p>
+        </div>
+
+        <div class="reasons">
+          <div class="reason">
+            <strong>Real-world durability</strong>
+            <span>Designed to perform in everyday environments and usage.</span>
+          </div>
+          <div class="reason">
+            <strong>Better customer experience</strong>
+            <span>Clear guidance, quick support, and smooth onboarding.</span>
+          </div>
+          <div class="reason">
+            <strong>Trusted payment flexibility</strong>
+            <span>More people can access solar without heavy upfront costs.</span>
+          </div>
+          <div class="reason">
+            <strong>Clean, quiet power</strong>
+            <span>Reduce generator dependence and fuel expenses.</span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap: 10px; flex-wrap:wrap; margin-top: 16px;">
+          <a class="btn primary" href="index.html#contact">Speak to an advisor</a>
+          <a class="btn ghost" href="index.html#products">Browse product range</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-inner" data-animate>
+        <div>&copy; 2025 Sun King. All rights reserved.</div>
+        <div><a href="index.html" style="text-decoration: underline; text-underline-offset: 3px;">Back to Home</a></div>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('dropdownMenu');
-      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-    }
-  </script>
+    (function () {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      // Scroll reveal
+      const animated = Array.from(document.querySelectorAll('[data-animate]'));
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const ent of entries) {
+            if (!ent.isIntersecting) continue;
+            ent.target.classList.add('in');
+            io.unobserve(ent.target);
+          }
+        }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+        animated.forEach(el => io.observe(el));
+      } else {
+        animated.forEach(el => el.classList.add('in'));
+      }
+
+      // Focus trap helper
+      function trapFocus(container, onClose) {
+        const focusables = () => Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )).filter(el => !el.hasAttribute('hidden'));
+
+        const handle = (e) => {
+          if (e.key === 'Escape') onClose?.();
+          if (e.key !== 'Tab') return;
+          const items = focusables();
+          if (!items.length) return;
+          const first = items[0];
+          const last = items[items.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        };
+
+        document.addEventListener('keydown', handle);
+        return () => document.removeEventListener('keydown', handle);
+      }
+
+      // Mobile menu drawer
+      const menuBtn = document.getElementById('menuBtn');
+      const backdrop = document.getElementById('backdrop');
+      const drawer = document.getElementById('drawer');
+      const closeBtn = document.getElementById('closeBtn');
+
+      let lastFocused = null;
+      let untrap = null;
+
+      function setHidden(hidden){
+        drawer.hidden = hidden;
+        backdrop.hidden = hidden;
+      }
+
+      function openMenu(){
+        lastFocused = document.activeElement;
+        setHidden(false);
+        requestAnimationFrame(() => {
+          document.body.classList.add('menu-open');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          closeBtn.focus({ preventScroll: true });
+          untrap = trapFocus(drawer, closeMenu);
+        });
+      }
+
+      function closeMenu(){
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        untrap?.();
+        const finish = () => {
+          setHidden(true);
+          lastFocused?.focus?.({ preventScroll: true });
+        };
+        if (reduceMotion) return finish();
+        window.setTimeout(finish, 260);
+      }
+
+      menuBtn.addEventListener('click', () => {
+        const isOpen = document.body.classList.contains('menu-open');
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      closeBtn.addEventListener('click', closeMenu);
+      backdrop.addEventListener('click', closeMenu);
+    })();
+  </script>
 </body>
 </html>
