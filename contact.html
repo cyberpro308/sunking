@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Sun King</title>
+  <link rel="icon" href="images/lion-icon.png.png" />
+  <meta name="description" content="Get in touch with Sun King. Speak to a solar advisor, request a quote, or ask about installation, payments and support." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="navbar">
+      <a class="logo-container" href="index.html" aria-label="Sun King Home">
+        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="store-locator.html">Stores</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <img src="images/nigeria-flag.png" alt="Nigeria Flag" class="flag-icon" />
+        <button class="icon-btn menu-toggle" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <div class="logo-container"><img src="images/lion-icon.png.png" alt="" class="logo-icon" /><span class="logo-text">sun king</span></div>
+      <button class="icon-btn" id="closeBtn" type="button" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="store-locator.html">Store Locator</a>
+      <a href="careers.html">Work With Us</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <div class="drawer-cta">
+      <a class="btn primary sm" href="products.html">Explore products</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="page-hero" aria-label="Contact hero">
+      <div class="container inner" data-animate>
+        <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></div>
+        <h1>Let's talk solar</h1>
+        <p>Have a question or ready to power your home? Send us a message and a Sun King advisor will get back to you within 24 hours.</p>
+      </div>
+    </section>
+
+    <section aria-label="Contact form and details">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="panel" data-animate>
+            <div class="section-head" style="margin-bottom: 14px;">
+              <span class="kicker">Send a message</span>
+              <h2>We'd love to hear from you</h2>
+              <p>Fields marked <span style="color:var(--danger)">*</span> are required.</p>
+            </div>
+
+            <form class="form" id="contactForm" novalidate>
+              <div class="field">
+                <label for="name">Full name <span class="req">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" data-validate="name" placeholder="e.g. Amaka Obi" required />
+                <span class="err">Please enter your name (at least 2 characters).</span>
+              </div>
+
+              <div class="field">
+                <label for="email">Email address <span class="req">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" data-validate="email" placeholder="you@example.com" required />
+                <span class="err">Please enter a valid email address.</span>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" data-validate="phone" placeholder="e.g. +234 800 000 0000" />
+                <span class="err">Please enter a valid phone number.</span>
+              </div>
+
+              <div class="field">
+                <label for="subject">I'm interested in</label>
+                <select id="subject" name="subject">
+                  <option value="General enquiry">General enquiry</option>
+                  <option value="Solar Lanterns">Solar Lanterns</option>
+                  <option value="Solar Home Systems">Solar Home Systems</option>
+                  <option value="Power Play">Power Play</option>
+                  <option value="Power Hub / Inverter">Power Hub / Inverter</option>
+                  <option value="Payment plans">Payment plans</option>
+                  <option value="Careers">Careers</option>
+                  <option value="Support">Support</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message" data-validate="message" placeholder="Tell us what you'd like to power, your budget, or any questions you have…" required></textarea>
+                <span class="err">Please enter a message (at least 10 characters).</span>
+              </div>
+
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+              <div class="btn-row" style="margin-top: 4px;">
+                <button class="btn primary" type="submit">Send message</button>
+                <a class="btn ghost" href="tel:+2348001234567">Call us instead</a>
+              </div>
+              <p class="form-note">This demo form validates your details and confirms on screen. Connect it to your email service or backend to receive live messages.</p>
+            </form>
+          </div>
+
+          <aside class="contact-info" data-animate data-delay="1">
+            <div class="info-card">
+              <h4>📞 Call us</h4>
+              <p><a href="tel:+2348001234567">+234 800 123 4567</a><br>Mon–Sat, 9:00–18:00</p>
+            </div>
+            <div class="info-card">
+              <h4>✉️ Email</h4>
+              <p><a href="mailto:hello@sunking.example">hello@sunking.example</a><br>We reply within 24 hours.</p>
+            </div>
+            <div class="info-card">
+              <h4>📍 Head office</h4>
+              <p>24 Allen Avenue, Ikeja,<br>Lagos, Nigeria</p>
+              <p style="margin-top:8px;"><a href="store-locator.html" style="text-decoration:underline;">Find all stores →</a></p>
+            </div>
+            <div class="info-card">
+              <h4>Follow us</h4>
+              <div class="socials" style="margin-top: 8px;">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="X / Twitter">X</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" data-animate>
+      <div class="footer-grid">
+        <div>
+          <div class="logo-container"><img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" /><span class="logo-text">sun king</span></div>
+          <div class="goglaimg" role="img" aria-label="Gogla logo"></div>
+          <p style="font-weight:900;">Sun King endorses Gogla Consumer Protection Principles</p>
+        </div>
+        <div>
+          <h4>Products</h4>
+          <a href="products.html#lanterns">Solar Lanterns</a>
+          <a href="products.html#home-systems">Solar Home Systems</a>
+          <a href="products.html#power-play">Power Play</a>
+          <a href="products.html#power-hub">Power Hub</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="about.html">About Us</a>
+          <a href="careers.html">Work with Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="store-locator.html">Store Locator</a>
+        </div>
+        <div>
+          <h4>Stay in the loop</h4>
+          <p style="margin-top:0;">Get product news and offers in your inbox.</p>
+          <form class="foot-news" data-newsletter aria-label="Newsletter signup">
+            <input type="email" placeholder="Your email" aria-label="Email address" required />
+            <button class="mini-btn" type="submit">Join</button>
+          </form>
+          <p data-newsletter-msg style="min-height: 18px; font-size: 13px; margin-top: 8px;"></p>
+        </div>
+      </div>
+      <div class="fineprint">
+        <div><a href="#" style="text-decoration:underline; text-underline-offset:3px;">Terms of Use</a> &nbsp;|&nbsp; <a href="#" style="text-decoration:underline; text-underline-offset:3px;">Privacy Policy</a></div>
+        <div>&copy; <span data-year>2025</span> Sun King | All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Pre-fill subject/message when arriving from a "Apply now" or product link (?role= / ?subject=)
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var role = params.get('role');
+      var subject = params.get('subject');
+      var subjectEl = document.getElementById('subject');
+      var messageEl = document.getElementById('message');
+      if (role && subjectEl) {
+        // Select "Careers" and prefill the message with the role
+        for (var i = 0; i < subjectEl.options.length; i++) {
+          if (subjectEl.options[i].value === 'Careers') { subjectEl.selectedIndex = i; break; }
+        }
+        if (messageEl) messageEl.value = 'I would like to apply for the ' + role + ' position. Please find my details below:\n\n';
+      } else if (subject && subjectEl) {
+        for (var j = 0; j < subjectEl.options.length; j++) {
+          if (subjectEl.options[j].value === subject) { subjectEl.selectedIndex = j; break; }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun King — Reliable Solar Solutions for Nigeria</title>
+
+  <link rel="icon" href="images/lion-icon.png.png" />
+  <meta name="description" content="Connect to reliable, stress-free solar energy with Sun King. Explore solar lanterns, home systems and power hubs — with flexible pay-as-you-go plans, installation and warranty." />
+  <meta name="author" content="Sun King" />
+
+  <meta property="og:title" content="Sun King — Reliable Solar Solutions for Nigeria" />
+  <meta property="og:description" content="Explore reliable and affordable solar-powered products for homes and businesses." />
+  <meta property="og:image" content="images/header img.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="navbar">
+      <a class="logo-container" href="index.html" aria-label="Sun King Home">
+        <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="store-locator.html">Stores</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <img src="images/nigeria-flag.png" alt="Nigeria Flag" class="flag-icon" />
+        <button class="icon-btn menu-toggle" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+          <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <!-- ================= MOBILE DRAWER ================= -->
+  <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div class="drawer-head">
+      <div class="logo-container">
+        <img src="images/lion-icon.png.png" alt="" class="logo-icon" />
+        <span class="logo-text">sun king</span>
+      </div>
+      <button class="icon-btn" id="closeBtn" type="button" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile">
+      <a href="index.html" class="active">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="store-locator.html">Store Locator</a>
+      <a href="careers.html">Work With Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="drawer-cta">
+      <a class="btn primary sm" href="products.html">Explore products</a>
+      <a class="btn black sm" href="contact.html">Talk to an advisor</a>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-animate>
+          <h1>Hello, Nigeria — power your world with the sun</h1>
+          <p>Connect to reliable, stress-free solar energy with Sun King — trusted solutions built for real life, with flexible pay-as-you-go plans.</p>
+
+          <div class="btn-row">
+            <a class="btn primary" href="products.html">Discover our range</a>
+            <a class="btn accent" href="contact.html">Speak to an advisor</a>
+          </div>
+
+          <div class="trust" aria-label="Highlights">
+            <div class="pill">Trusted nationwide</div>
+            <div class="pill">Pay small small</div>
+            <div class="pill">Installation + warranty</div>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Quick stats">
+          <div class="stat" data-animate data-delay="1">
+            <strong>Reliable power</strong>
+            <span>Designed for everyday use, built to last.</span>
+          </div>
+          <div class="stat" data-animate data-delay="2">
+            <strong>Flexible payments</strong>
+            <span>Affordable options that fit your budget.</span>
+          </div>
+          <div class="stat" data-animate data-delay="3">
+            <strong>Support included</strong>
+            <span>Guidance, installation &amp; after-sales care.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DISCOVER ================= -->
+    <section class="discover" aria-label="Discover">
+      <div class="container discover-wrap" data-animate>
+        <div class="section-head">
+          <span class="kicker">Get started</span>
+          <h2>Discover your perfect solar-powered solution</h2>
+          <p>Explore our extensive range of reliable and affordable solar-powered products for homes and businesses across Nigeria.</p>
+        </div>
+        <div style="display:flex; justify-content:flex-end;">
+          <a class="btn black" href="products.html">Browse our range</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COUNTERS ================= -->
+    <section aria-label="Impact by the numbers" style="padding-top: calc(var(--sec) * 0.7); padding-bottom: calc(var(--sec) * 0.7);">
+      <div class="container" data-animate>
+        <div class="counters">
+          <div class="counter">
+            <div class="num"><span data-count="120" data-suffix="M+">0</span></div>
+            <div class="label">Lives brightened worldwide</div>
+          </div>
+          <div class="counter">
+            <div class="num"><span data-count="40" data-suffix="+">0</span></div>
+            <div class="label">Countries served</div>
+          </div>
+          <div class="counter">
+            <div class="num"><span data-count="30000" data-suffix="+">0</span></div>
+            <div class="label">Agents &amp; partners</div>
+          </div>
+          <div class="counter">
+            <div class="num"><span data-count="4.8" data-suffix="/5">0</span></div>
+            <div class="label">Average customer rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHY ================= -->
+    <section id="why" aria-label="Why Sun King">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <span class="kicker">Why choose us</span>
+          <h2>Why Sun King?</h2>
+          <p>Nigeria's trusted solar provider — clarity, reliability, and real value.</p>
+        </div>
+
+        <div class="why-list">
+          <div class="why" data-animate data-delay="1">
+            <div class="ico" aria-hidden="true">🏆</div>
+            <h3>Most trusted provider</h3>
+            <p>Built for reliability and real-world usage across Nigeria.</p>
+          </div>
+          <div class="why" data-animate data-delay="2">
+            <div class="ico" aria-hidden="true">🛠️</div>
+            <h3>Installation + warranty</h3>
+            <p>Professional installation and dependable warranty coverage.</p>
+          </div>
+          <div class="why" data-animate data-delay="1">
+            <div class="ico" aria-hidden="true">💳</div>
+            <h3>Pay small small</h3>
+            <p>Flexible payment options that make solar accessible to everyone.</p>
+          </div>
+          <div class="why" data-animate data-delay="2">
+            <div class="ico" aria-hidden="true">⚡</div>
+            <h3>Power in your hands</h3>
+            <p>Energy independence for homes and small businesses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+    <section class="products-banner" id="products" aria-label="Products">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <span class="kicker">Products</span>
+          <h2>Our products</h2>
+          <p>Solar solutions to meet your every need. Find the best option for you.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="card" data-animate data-delay="1">
+            <div class="card-media" style="background-image:url('images/lantern.jpeg')">
+              <span class="card-tag">Best seller</span>
+            </div>
+            <div class="card-body">
+              <h3>Solar lanterns</h3>
+              <p>Portable lighting, phone charging, music and radio.</p>
+              <div class="card-foot">
+                <span class="price">from ₦15,000</span>
+                <a class="mini-btn" href="products.html#lanterns">Browse range</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-animate data-delay="2">
+            <div class="card-media" style="background-image:url('images/solar home.jpeg')"></div>
+            <div class="card-body">
+              <h3>Solar home systems</h3>
+              <p>Light your home and power TVs, radios and fans.</p>
+              <div class="card-foot">
+                <span class="price">from ₦75,000</span>
+                <a class="mini-btn" href="products.html#home-systems">Browse range</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-animate data-delay="3">
+            <div class="card-media" style="background-image:url('images/power play.jpeg')"></div>
+            <div class="card-body">
+              <h3>Power Play</h3>
+              <p>Affordable and portable solar energy, anytime.</p>
+              <div class="card-foot">
+                <span class="price">from ₦45,000</span>
+                <a class="mini-btn" href="products.html#power-play">Learn more</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-animate data-delay="4">
+            <div class="card-media" style="background-image:url('images/powerhub.jpeg')"></div>
+            <div class="card-body">
+              <h3>Power Hub</h3>
+              <p>Complete AC solar power for home or business.</p>
+              <div class="card-foot">
+                <span class="price">from ₦250,000</span>
+                <a class="mini-btn" href="products.html#power-hub">Learn more</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="btn-row" style="margin-top: 22px; justify-content:center;" data-animate>
+          <a class="btn accent" href="products.html">View all products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section aria-label="Customer stories">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <span class="kicker">Customer stories</span>
+          <h2>What our customers say</h2>
+          <p>Real stories from homes and businesses using Sun King.</p>
+        </div>
+
+        <div class="testi-grid">
+          <div class="testi" data-animate data-delay="1">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"Sun King brought light and life to my home. My children can read at night, and we enjoy family moments watching TV together."</p>
+            <div class="who">Mr. Iwuamadi Bonaventure<span>Businessman, Owerri</span></div>
+          </div>
+          <div class="testi" data-animate data-delay="2">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"No more generator fuel costs. My shop stays open late and my customers love the cool, quiet lighting. Best decision I made."</p>
+            <div class="who">Mrs. Amina Yusuf<span>Shop owner, Kano</span></div>
+          </div>
+          <div class="testi" data-animate data-delay="3">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>"The pay-small-small plan made it easy. Installation was fast and the support team answered all my questions patiently."</p>
+            <div class="who">Emeka Okafor<span>Farmer, Enugu</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial" id="contact" style="margin-top: 22px;" data-animate>
+          <blockquote>
+            "Sun King brought light and life to my home. Now we can cook food in comfort, my children can read at night,
+            and we enjoy good family moments watching TV together."
+            <br><br><strong>— Mr. Iwuamadi Bonaventure</strong>, Businessman
+          </blockquote>
+          <div class="cta-card">
+            <h3>Need an expert opinion?</h3>
+            <p>Our personal solar advisors are here to help you pick the right solution.</p>
+            <a class="btn accent" href="contact.html">Speak to us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="tint-band teal" aria-label="About Sun King">
+      <div class="container center">
+        <div class="section-head center" data-animate>
+          <span class="kicker">About</span>
+          <h2>About Sun King</h2>
+          <p>Solar solutions for people without reliable electricity.</p>
+        </div>
+        <div class="panel" style="max-width: 920px; margin: 0 auto;" data-animate>
+          <p class="muted">
+            Sun King designs, distributes, installs, and finances solar energy solutions for the 1.8 billion people without
+            reliable electricity. From lanterns to multi-kilowatt systems, Sun King meets diverse energy needs across Africa and Asia.
+          </p>
+          <div class="btn-row" style="margin-top:16px; justify-content:center;">
+            <a class="btn primary" href="about.html">Go to About Us page</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK WITH US ================= -->
+    <section aria-label="Work with us">
+      <div class="container center">
+        <div class="round-img" style="background-image:url('images/work with us.jpeg')" data-animate></div>
+        <div class="section-head center" style="margin-top:14px;" data-animate>
+          <span class="kicker">Careers</span>
+          <h2>Work with us</h2>
+          <p>Join Africa's most popular solar supplier.</p>
+        </div>
+        <div class="panel" style="max-width: 920px; margin: 0 auto;" data-animate>
+          <p class="muted">
+            Recognized by Great Place to Work, Sun King Nigeria fosters a dynamic and friendly culture. Join a team building
+            reliable energy access at scale.
+          </p>
+          <div class="btn-row" style="margin-top:16px; justify-content:center;">
+            <a class="btn primary" href="careers.html">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container" data-animate>
+      <div class="footer-grid">
+        <div>
+          <div class="logo-container">
+            <img src="images/lion-icon.png.png" alt="Sun King Logo" class="logo-icon" />
+            <span class="logo-text">sun king</span>
+          </div>
+          <div class="goglaimg" role="img" aria-label="Gogla logo"></div>
+          <p style="font-weight:900;">Sun King endorses Gogla Consumer Protection Principles</p>
+        </div>
+
+        <div>
+          <h4>Products</h4>
+          <a href="products.html">Product Selector</a>
+          <a href="products.html#home-systems">Solar Home Systems</a>
+          <a href="products.html#power-hub">Solar Inverter Systems</a>
+          <a href="products.html#lanterns">Solar Lanterns</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="about.html">About Us</a>
+          <a href="careers.html">Work with Us</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="store-locator.html">Store Locator</a>
+        </div>
+
+        <div>
+          <h4>Stay in the loop</h4>
+          <p style="margin-top:0;">Get product news and offers in your inbox.</p>
+          <form class="foot-news" data-newsletter aria-label="Newsletter signup">
+            <input type="email" placeholder="Your email" aria-label="Email address" required />
+            <button class="mini-btn" type="submit">Join</button>
+          </form>
+          <p data-newsletter-msg style="min-height: 18px; font-size: 13px; margin-top: 8px;"></p>
+        </div>
+      </div>
+
+      <div class="fineprint">
+        <div><a href="#" style="text-decoration:underline; text-underline-offset:3px;">Terms of Use</a> &nbsp;|&nbsp; <a href="#" style="text-decoration:underline; text-underline-offset:3px;">Privacy Policy</a></div>
+        <div>&copy; <span data-year>2025</span> Sun King | All rights reserved</div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
